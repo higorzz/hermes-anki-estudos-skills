@@ -1,0 +1,21 @@
+# OS/editor
+.DS_Store
+Thumbs.db
+*~
+
+# Python/build junk
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Anki/user data safety
+*.anki2
+*.anki21
+*.apkg
+*.colpkg
+collection.media/
+
+# Secrets/env
+.env
+*.key
+*.pem
