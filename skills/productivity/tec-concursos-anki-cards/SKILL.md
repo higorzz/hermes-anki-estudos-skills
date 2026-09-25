@@ -238,6 +238,7 @@ Rules:
 6. If no official source can be read, say that in the approval draft and do not fabricate the block.
 7. When editing/reinserting an existing generated support block, remove/replace old `HERMES_LEGAL_SOURCE_V1`, `HERMES_CPC_SOURCE_V1`, `HERMES_NBC_SOURCE_V1`, or `HERMES_TERMS_SOURCE_V1` blocks rather than duplicating them.
 8. For Auditoria cards, prefer adding `HERMES_NBC_SOURCE_V1` blocks with the literal NBC item whenever the issue is supported by NBC TA/NBC PA/NBC TI wording; omit only when the point is purely doctrinal or no reliable item can be identified.
+9. This is mandatory at insertion time for Direito, Legislação Tributária, Contabilidade/CPC, Auditoria/NBC, and correlated official-standard cards: the write/insert script must verify that every inserted note has the expected `HERMES_*_SOURCE_V1` block, unless the approval draft explicitly marked that no reliable official source was available. Do not report insertion success if any target note is missing its source marker.
 
 ## Tags and Themes
 

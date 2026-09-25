@@ -19,6 +19,8 @@ Scope boundary: this skill is the **database/Anki operations skill**. It does no
 5. After writing, verify by reopening the database read-only and checking:
    - target note/card fields contain the intended text;
    - stale text was removed;
+   - generated source-block markers are balanced (for example exactly one `<!-- HERMES_LEGAL_SOURCE_V1 -->` and one `<!-- /HERMES_LEGAL_SOURCE_V1 -->` when editing a single legal block); orphan closing markers can remain if the previous block was malformed, so explicitly count start/end markers;
+   - for newly inserted/edited Direito, Legislação Tributária, Contabilidade/CPC, Auditoria/NBC, and correlated official-standard cards, every target note has the expected `HERMES_LEGAL_SOURCE_V1`, `HERMES_CPC_SOURCE_V1`, or `HERMES_NBC_SOURCE_V1` marker unless explicitly documented as source-unavailable;
    - `pragma integrity_check` returns `ok`.
 6. If WAL files exist or a prior edit does not appear in Anki, force a WAL checkpoint after commit, then reopen the DB from disk to verify persistence.
 7. For direct insertion of approved new cards, see `references/creating-approved-cards.md` for the known-good workflow: Basic note insertion, Área Fiscal deck mapping, 3-level tags, legal-source blocks, and the stale `-shm`/empty-WAL pitfall.
@@ -78,6 +80,8 @@ When adding cited legal article wording to the back/answer side of Higor's legal
 
 - Use official Brazilian authority sources for the current wording; prefer Planalto/Presidência compiled pages for federal statutes and Constitution. Do **not** bulk-insert article text from memory.
 - Keep the statutory text as literal as possible, matching the law's heading and article wording.
+- For screenshots/specific cards where Higor says the lei seca is too large, work **one card at a time**: identify the note by its front text, add only the minimum legal excerpt that supports that card, verify marker count + `integrity_check`, then proceed to the next card only if requested. Higor explicitly prefers this slower per-card workflow to avoid breaking multiple cards at once.
+- If Higor changes scope from “editar” to “refazer/criar novo e deixar o antigo”, do **not** update the existing note. Create a new equivalent note in the same deck/tag with the revised concise legal-source block, and leave the old card untouched.
 - Compact unnecessary source line-wraps from Planalto: keep line breaks only when moving to a new legal unit (article, paragraph, inciso, alínea, or a true heading). Do not preserve arbitrary HTML/text wraps that make the card tall.
 - Watch for Planalto headings between articles (e.g. next-article headings such as “Exclusão de ilicitude”) being captured by naive “until next Art.” extraction; remove those if they do not belong to the cited article.
 - Do **not** add emojis, decorative labels, horizontal rules, bold/italic styling, quotation marks, or explanatory titles unless the user asks.
@@ -96,15 +100,20 @@ For large batches of legal/accounting study cards:
 2. Map candidate notes by deck/tag and count them before writing.
 3. Fetch/update a local cache of official source pages and include the consultation date in the inserted block.
 4. Add idempotent HTML markers (for example `HERMES_LEGAL_SOURCE_V1`, `HERMES_CPC_SOURCE_V1`, `HERMES_TERMS_SOURCE_V1`) so re-runs remove/replace previous generated blocks instead of duplicating them.
-5. For long statutes/articles, **do not paste the whole law or whole long article**. Add only the portion that sustains the card's explanation:
-   - if the card cites a paragraph/inciso/alínea, include minimal caput/context plus that specific device;
-   - if the card depends only on the caput, include only the caput;
+5. For long statutes/articles, **do not paste the whole law or whole long article**. Higor strongly prefers lei seca blocks to contain only the legal wording that is coherent with the flashcard, even if that means using bracketed ellipses inside a caput.
+   - if the card cites a paragraph/inciso/alínea, include only the minimum caput/context needed plus that specific device;
+   - if the caput is long and only one clause matters, quote just that clause with `[...]` rather than the whole caput;
+   - if the card depends only on the caput, include only the relevant caput portion;
    - only include a full article when it is genuinely short;
    - remove unrelated nearby articles accidentally captured by proximity (e.g. CF art. 2 when the intended citation is Lei 8.987 art. 2º).
 6. Before reporting done, inspect oversized generated legal blocks (rough rule: >1,800–2,200 visible chars) and trim them manually/curated if needed.
 7. For Contabilidade/Auditoria cards, when the answer cites a CPC item, prefer adding the **actual pertinent CPC wording** from official CPC PDFs/pages, not only a keyword/terms block. Keep it scoped to the cited item(s) and the assertion in the card; do not paste whole pronouncements. Use `HERMES_CPC_SOURCE_V1` for generated CPC wording. If a previous `HERMES_TERMS_SOURCE_V1` terms-only block is present and the user asked for CPC wording, replace that terms block with the CPC wording rather than appending both.
 8. Before bulk edits, if prior runs have been unstable or the user is frustrated, do a one-card proof edit first: backup, edit one representative note, reopen read-only, report tag/deck/exact inserted text/integrity. After proof succeeds, run the rest as a single idempotent script with minimal chatter.
 9. Produce a report: target count, changed count, per-deck counts, official URLs, skipped items/reasons, backup paths, and `integrity_check`.
+
+## Maintenance and GitHub Sync
+
+When this skill changes for Higor, also keep the public backup repository in sync: `higorzz/hermes-anki-estudos-skills`, local checkout `/home/higor/hermes-anki-estudos-skills`. Copy the updated skill directory into `skills/productivity/anki-card-editing/`, commit with the GitHub noreply email `15950097+higorzz@users.noreply.github.com`, and push. This is a maintenance step for the skill library; do not mix it with Anki database writes unless the user asked for both.
 
 ## Verification response
 

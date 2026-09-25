@@ -5,7 +5,12 @@ Use this when Higor approves a drafted batch and asks to add it to Anki.
 ## Known-good workflow from Derecho Civil batch
 
 - Collection path used in WSL: `/mnt/c/Users/higor/AppData/Roaming/Anki2/hbzeira/collection.anki2`.
-- Deck for Direito Civil: `Área Fiscal\x1fDireito Civil` (`did=1771364993467`).
+- Known Área Fiscal deck IDs used successfully:
+  - Direito Civil: `Área Fiscal\x1fDireito Civil` (`did=1771364993467`).
+  - Direito Tributário: `Área Fiscal\x1fDireito Tributário` (`did=1747650582304`).
+  - Reforma Tributária: `Área Fiscal\x1fReforma Tributária` (`did=1789219039421`).
+  - Legislação Tributária Estadual: `Área Fiscal\x1fLegislação Tributária Estadual` (`did=1790362785275`).
+- When a batch contains Reforma Tributária cards, place those cards in the dedicated Reforma Tributária deck when requested or when the card/tag is clearly reform-specific; do not bury them in Direito Tributário by default.
 - Note type for ordinary C/E cards: `Basic` (`mid=1628628663976`) with fields `Front` and `Back` separated by `\x1f`.
 - Front should contain only the assertive prompt; do not prefix `TEMA`.
 - Back should contain concise `GABARITO: ...` explanation. For legal cards with direct statutory support, append an idempotent `HERMES_LEGAL_SOURCE_V1` block at `font-size: 65%`.
