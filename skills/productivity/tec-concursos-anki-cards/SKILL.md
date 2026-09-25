@@ -74,7 +74,9 @@ Even when the source is legal, frame the point by fiscal-exam logic, not by judi
 
 ## Core Quantity Rule
 
-Default: **1 relevant point = 1 flashcard**.
+Default: **1 relevant point = 1 flashcard**, but keep batches lean. Higor prefers fewer cards focused on what is most likely to be cobrando/recorrente, rather than exhaustive coverage of every exception.
+
+When analyzing aulas/PDFs, first map what appears most in the theory and questions, then draft a compact batch from those high-yield patterns. Avoid low-frequency edge cases unless the material itself emphasizes them or Higor asks for them.
 
 Create cards only for autonomous, useful points actually present in the source.
 
@@ -109,15 +111,17 @@ If an alternative and a professor comment conflict, follow the professor/comment
 Prioritize Certo/Errado cards even when the source, banca, or inspiration is multiple choice. For Higor, the default difficulty mix should weight **CEBRASPE, FGV, and FCC equally**: CEBRASPE-style objective assertions and subtle inversions; FGV-style fine conceptual distinctions/exceptions/consequences; FCC-style lei seca precision, deadlines, requirements, and “salvo se” wording. Even when a card is based on FGV or FCC patterns, the output format remains **Certo/Errado**, unless Higor explicitly asks for another format.
 
 Rules:
+Rules:
 
 1. Each card tests one main idea.
 2. The front is a short, objective exam-style assertion.
-3. The back has the gabarito and a brief justification.
-4. Avoid open prompts like "conceitue", "explique" or "quais são".
-5. Do not spoil the exact tested trick in `TEMA`; use broad subject labels.
-6. Difficulty should come from precision, not convoluted wording.
-7. Keep front and back short.
-8. Do not invent exceptions, deadlines, case law, article numbers, formulas, or requirements.
+3. When it improves recall, especially in Portuguese/grammar cards or rules that are easier to recognize in context, put a **short concrete example directly in the front** and make the assertion about that example. Higor explicitly prefers examples on the front to emphasize the tested rule when it makes sense. Example pattern: `Em “houve problemas”, ...`; avoid long examples that turn the front into a mini-aula.
+4. The back has the gabarito and a brief justification.
+5. Avoid open prompts like "conceitue", "explique" or "quais são".
+6. Do not spoil the exact tested trick in `TEMA`; use broad subject labels.
+7. Difficulty should come from precision, not convoluted wording.
+8. Keep front and back short.
+9. Do not invent exceptions, deadlines, case law, article numbers, formulas, or requirements.
 
 ### Errado cards
 
@@ -267,7 +271,8 @@ The current approved Anki standard for Área Fiscal is lowercase ASCII with **ex
 
 - `direito_administrativo::poder_de_policia`
 - `direito_administrativo::atos_administrativos::atributos`
-- `direito_administrativo::licitacoes::lei_14133`
+- `direito_administrativo::licitacoes::dispensa`
+- `direito_administrativo::licitacoes::registro_de_precos`
 - `direito_administrativo::servicos_publicos::permissao`
 - `direito_constitucional::direitos_fundamentais`
 - `direito_constitucional::organizacao_do_estado::competencias`
@@ -301,7 +306,7 @@ The current approved Anki standard for Área Fiscal is lowercase ASCII with **ex
 - `ti::seguranca_da_informacao`
 - `portugues::sintaxe::concordancia`
 
-When in doubt, choose the closest broad canonical tag and keep it stable. If a new recurring theme appears, create a normalized tag once and reuse it.
+When in doubt, choose the closest broad canonical tag and keep it stable. If a new recurring theme appears, create a normalized tag once and reuse it. Avoid using a statute number itself as the subassunto when it is the default statute for the whole assunto (for example, in licitações under Direito Administrativo, prefer `dispensa`, `inexigibilidade`, `registro_de_precos`, etc., rather than `lei_14133`).
 
 ## Output Format
 
@@ -404,11 +409,16 @@ Never insert unapproved draft cards into Anki. If Higor edits a card in the appr
 9. **Forgetting the 65% source block.** Fix: for law/CPC/accounting/legal cards, append the minimal official lei seca/CPC/source wording at the end of the verso using `font-size: 65%` and the proper idempotency marker.
 10. **Pasting huge official text.** Fix: include only the exact article/paragraph/inciso/item needed to support the card.
 
+## Maintenance and GitHub Sync
+
+When this skill changes for Higor, also keep the public backup repository in sync: `higorzz/hermes-anki-estudos-skills`, local checkout `/home/higor/hermes-anki-estudos-skills`. Copy the updated skill directory into `skills/productivity/tec-concursos-anki-cards/`, commit with the GitHub noreply email `15950097+higorzz@users.noreply.github.com`, and push. This is part of maintaining the Anki/estudos skill library, not part of generating cards.
+
 ## Verification Checklist
 
 Before finalizing:
 
 - [ ] Every card comes from a legible point in the source.
+- [ ] For broad PDFs/aulas, the batch is lean and focused on the most recurrent cobrança patterns rather than every rule or exception.
 - [ ] One card tests one idea.
 - [ ] No invented exception, article, prazo, formula, or jurisprudence.
 - [ ] Certo/Errado mix is sensible for the batch.
