@@ -53,7 +53,9 @@ If Higor asks for edits before approval, revise the cards and ask for approval a
 
 ## Source Handling Beyond Tec Concursos
 
-The source can be a question platform, a statute, a specific article, an edital, a PDF, copied study material, a teacher note, a CPC item, or Higor's own pasted notes.
+The source can be a question platform, a statute, a specific article, an edital, a PDF, copied study material, a teacher note, a CPC item, Higor's own pasted notes, or a request to research recent fiscal concursos/provas before deciding what to study.
+
+For SEFAZ/SEFA recent-exam reconnaissance — e.g. “últimas SEFAZ”, “quais já tiveram prova aplicada”, “pega o gabarito e resume os assuntos cobrados” — use `references/sefaz-recent-exam-recon.md`. Key rule: distinguish edital publicado from prova aplicada/homologada, annotate banca/status, and summarize assunto patterns by matéria without automatically creating Anki cards.
 
 Apply these source rules:
 
@@ -116,6 +118,7 @@ Rules:
 1. Each card tests one main idea.
 2. The front is a short, objective exam-style assertion.
 3. When it improves recall, especially in Portuguese/grammar cards or rules that are easier to recognize in context, put a **short concrete example directly in the front** and make the assertion about that example. Higor explicitly prefers examples on the front to emphasize the tested rule when it makes sense. Example pattern: `Em “houve problemas”, ...`; avoid long examples that turn the front into a mini-aula.
+   - For **Português** cards, the front must contain enough context to stand alone in Anki. Do not use a bare fragment if the rule depends on interpretation, regência, pontuação, coesão, reescrita, or semantic value. Prefer a short full sentence/period plus the assertion, e.g. `No período “...”, ...`. Higor explicitly corrected that Portuguese cards need more context so the card makes sense during review.
 4. The back has the gabarito and a brief justification.
 5. Avoid open prompts like "conceitue", "explique" or "quais são".
 6. Do not spoil the exact tested trick in `TEMA`; use broad subject labels.
@@ -143,22 +146,30 @@ Before finalizing an Errado card, mentally validate: **a candidate who does not 
 
 ### Cloze / omissão de palavras
 
-Use omission only when it is clearly better for memorizing:
+Use cloze/omissão de palavras **com mais frequência quando for pertinente**, especially when the learning target is better recalled by completing a precise term, relation, or formula than by judging a C/E assertion. Higor has explicitly corrected that I had been using cloze too little; do not default mechanically to Certo/Errado when cloze would be more efficient.
 
+Prefer cloze for:
+
+- formulas, equations, symbols, and calculation patterns;
+- paired distinctions and contrastive concepts (for example, “por fora” vs. “por dentro”, “linear” vs. “exponencial”);
 - lists, roles, ordem, requisitos cumulativos;
-- deadlines and formulas;
+- deadlines, percentages, thresholds, and exact numbers;
 - exact enumerations;
-- short normative wording where the missing term matters.
+- short normative wording where the missing term matters;
+- technical vocabulary where the exam trick is the missing word itself.
 
-Do not use cloze just to vary format.
+Do not use cloze just to vary format: use it because the missing element is what Higor needs to retrieve. For batches in Matemática Financeira, Estatística, RLM, Economia, Contabilidade, TI, and other formula/list-heavy subjects, actively consider a cloze-heavy batch before choosing C/E.
 
 ## Certo/Errado Proportion
 
-For batches with several cards, try to balance Certo and Errado around 50/50 without sacrificing quality.
+For batches with several cards, balance Certo and Errado around 50/50 without sacrificing quality. Higor has explicitly corrected that batches with noticeably more Certo than Errado are not varied enough; for even-sized thematic batches, default to an exact 50/50 split unless the source itself makes that impossible.
 
 - With 1 card: choose Certo or Errado based on what best memorizes the point.
 - With 2 cards: prefer 1 Certo and 1 Errado if it makes sense.
-- Never force an Errado card if it would require an invented or silly distortion.
+- With large even batches not tied to a fixed gabarito (for example “3 cards per recurring theme”), plan the polarity count before drafting and end with an equal split, e.g. 15 Certo / 15 Errado for 30 cards. This is not optional for Higor: he corrected a 24/16 TI batch and asked for 50/50, so verify the count before presenting.
+- With odd batches, keep the difference at most 1 unless the source requires otherwise.
+- Never force an Errado card if it would require an invented or silly distortion; instead revise another card where a plausible technical inversion exists.
+- In the final report, include the C/E count and quickly verify it matches the planned balance before presenting.
 
 ## Legal, Accounting, and Official Support
 
