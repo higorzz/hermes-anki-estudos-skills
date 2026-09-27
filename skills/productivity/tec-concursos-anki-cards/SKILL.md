@@ -187,7 +187,9 @@ Rules:
 
 Back-side pattern for support:
 
-`GABARITO: ✅ Certo — [explicação principal do porquê a assertiva está certa/errada, com o trecho decisivo em **negrito**].`
+`GABARITO: ✅ Certo — [explicação principal do porquê a assertiva está certa/errada, com o trecho decisivo em <b>negrito HTML</b>].`
+
+Important for Anki: fields render HTML, not Markdown. Do **not** leave Markdown emphasis like `**texto**` in fronts/backs; convert emphasis to `<b>texto</b>` before inserting or updating notes.
 
 Then, when the card comes from a prior concurso/question, add a short subordinate note **after** the main explanation, not as the explanation itself:
 
@@ -369,7 +371,7 @@ FRENTE:
 [assertiva objetiva de Certo ou Errado]
 
 VERSO:
-GABARITO: [✅ Certo / ❌ Errado] — [explicação principal do porquê está certo/errado, com o trecho decisivo em **negrito**].
+GABARITO: [✅ Certo / ❌ Errado] — [explicação principal do porquê está certo/errado, com o trecho decisivo em <b>negrito HTML</b>].
 <br><br><div style="font-size: 65%; text-align: left;"><b>Como caiu:</b> [quando for de concurso anterior, 1 frase curta sobre a forma de cobrança].</div>
 [bloco HERMES_LEGAL/CPC/NBC/TERMS_SOURCE_V1, se aplicável]
 
