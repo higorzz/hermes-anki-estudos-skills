@@ -428,7 +428,11 @@ Use `anki-card-editing` for the concrete database safety workflow, including:
    - back = `VERSO` / `VERSO/OBS`, including any approved final source block in `font-size: 65%` for lei seca/CPC/official support;
    - tags = standardized `TAG` plus any deck/note-type tags already agreed for Higor's study workflow;
    - theme/subject preserved in the card content when useful for review.
-5. If deck or note type is ambiguous, use the established/default fiscal-study deck and note type if discoverable; ask only if there is no safe default.
+5. If deck or note type is ambiguous, use the established/default fiscal-study deck and note type if discoverable; ask only if there is no safe default. For Higor's Área Fiscal cards, use these deck-routing defaults when applicable:
+   - Direito Financeiro/AFO/Finanças Públicas → `Área Fiscal::AFO e Direito Financeiro`;
+   - Contabilidade de Custos → `Área Fiscal::Contabilidade de Custos`;
+   - Reforma Tributária / IBS / CBS / Imposto Seletivo / EC 132/2023 / LC 214/2025 → `Área Fiscal::Reforma Tributária`;
+   - Contabilidade Geral/Avançada that is not cost accounting → `Área Fiscal::Contabilidade Geral e Avançada`.
 6. After insertion, reopen/read the collection and verify the created notes exist, tags are present, and `pragma integrity_check` returns `ok`.
 7. Report concisely: quantity inserted, deck/note type used, tags, backup path, official source blocks added/replaced when applicable, and integrity result.
 

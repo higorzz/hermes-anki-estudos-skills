@@ -24,6 +24,7 @@ Scope boundary: this skill is the **database/Anki operations skill**. It does no
    - `pragma integrity_check` returns `ok`.
 6. If WAL files exist or a prior edit does not appear in Anki, force a WAL checkpoint after commit, then reopen the DB from disk to verify persistence.
 7. For direct insertion of approved new cards, see `references/creating-approved-cards.md` for the known-good workflow: Basic note insertion, Área Fiscal deck mapping, 3-level tags, legal-source blocks, and the stale `-shm`/empty-WAL pitfall.
+8. **Pre-insertion source-block audit for study cards:** before inserting any generated Direito, Direito Financeiro/AFO, Legislação Tributária, Contabilidade/Custos, or Auditoria cards, scan the approved batch and verify each applicable card already has the expected official/normative marker (`HERMES_LEGAL_SOURCE_V1`, `HERMES_CPC_SOURCE_V1`, or `HERMES_NBC_SOURCE_V1`) unless the draft explicitly marks source unavailable. A generic “Fonte: banca/prova” line is not a substitute for these blocks. Do not report success until this audit passes; if missing, enrich the draft/DB first and re-verify marker counts.
 
 ## Modern Anki SQLite notes
 

@@ -10,10 +10,15 @@ Use this when Higor approves a drafted batch and asks to add it to Anki.
   - Direito Tributário: `Área Fiscal\x1fDireito Tributário` (`did=1747650582304`).
   - Reforma Tributária: `Área Fiscal\x1fReforma Tributária` (`did=1789219039421`).
   - Legislação Tributária Estadual: `Área Fiscal\x1fLegislação Tributária Estadual` (`did=1790362785275`).
+  - AFO e Direito Financeiro: `Área Fiscal\x1fAFO e Direito Financeiro`.
+  - Contabilidade de Custos: `Área Fiscal\x1fContabilidade de Custos`.
+- Deck routing defaults: Direito Financeiro/AFO/Finanças Públicas → AFO e Direito Financeiro; Contabilidade de Custos → Contabilidade de Custos; Reforma Tributária/IBS/CBS/Imposto Seletivo/EC 132/2023/LC 214/2025 → Reforma Tributária; Contabilidade Geral/Avançada that is not cost accounting → Contabilidade Geral e Avançada.
 - When a batch contains Reforma Tributária cards, place those cards in the dedicated Reforma Tributária deck when requested or when the card/tag is clearly reform-specific; do not bury them in Direito Tributário by default.
 - Note type for ordinary C/E cards: `Basic` (`mid=1628628663976`) with fields `Front` and `Back` separated by `\x1f`.
 - Front should contain only the assertive prompt; do not prefix `TEMA`.
-- Back should contain concise `GABARITO: ...` explanation. For legal cards with direct statutory support, append an idempotent `HERMES_LEGAL_SOURCE_V1` block at `font-size: 65%`.
+- Back should contain concise `GABARITO: ...` explanation.
+- For generated study cards in Direito/Direito Financeiro/AFO/Legislação Tributária, append an idempotent `HERMES_LEGAL_SOURCE_V1` block at `font-size: 65%` when there is a direct statutory, constitutional, jurisprudential, or normative support. For Contabilidade/Custos, append `HERMES_CPC_SOURCE_V1` (or equivalent CFC/CPC normative support); for Auditoria, append `HERMES_NBC_SOURCE_V1` when supported by NBC/CFC wording. A generic “Fonte: banca/prova” line is useful provenance but does **not** satisfy this requirement.
+- Before writing, count expected source blocks from the cards' primary tags and fail the insertion audit if any applicable card lacks its marker, unless the approval draft explicitly says reliable official support is unavailable for that card.
 - Tags must use exactly three hierarchy levels, e.g. `direito_civil::negocio_juridico::condicao`, stored in `notes.tags` with leading/trailing spaces.
 
 ## Safety notes
