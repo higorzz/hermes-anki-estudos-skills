@@ -193,7 +193,9 @@ Important for Anki: fields render HTML, not Markdown. Do **not** leave Markdown 
 
 Then, when the card comes from a prior concurso/question, add a short subordinate note **after** the main explanation, not as the explanation itself:
 
-`<br><br><div style="font-size: 65%; text-align: left;"><b>Como caiu:</b> [1 frase curta sobre como o concurso cobrou o ponto].</div>`
+`<br><div style="font-size: 65%; text-align: left;"><b>Como caiu:</b> [Concurso/ano — matéria: assunto X / subassunto Y. 1 frase curta sobre a forma de cobrança].</div>`
+
+Use only one `<br>` before the “Como caiu” block (not `<br><br>`), so it appears close to the main explanation. The wording must identify the source exam and subject context, e.g. `SEFAZ RN 2025 — Português: assunto sintaxe / regência. A banca cobrou reescrita preservando regência e sentido.`
 
 If applicable, append the official legal/CPC/NBC source block after the “Como caiu” note. The main `VERSO` must never be only “foi cobrado em...” — it must teach why the C/E answer is correct. If no reliable support can be retrieved without overreaching, omit the citation rather than guessing.
 
@@ -372,7 +374,7 @@ FRENTE:
 
 VERSO:
 GABARITO: [✅ Certo / ❌ Errado] — [explicação principal do porquê está certo/errado, com o trecho decisivo em <b>negrito HTML</b>].
-<br><br><div style="font-size: 65%; text-align: left;"><b>Como caiu:</b> [quando for de concurso anterior, 1 frase curta sobre a forma de cobrança].</div>
+<br><div style="font-size: 65%; text-align: left;"><b>Como caiu:</b> [quando for de concurso anterior, identificar concurso/ano + matéria + assunto/subassunto e resumir a forma de cobrança].</div>
 [bloco HERMES_LEGAL/CPC/NBC/TERMS_SOURCE_V1, se aplicável]
 
 ────────────────────────
@@ -471,4 +473,5 @@ Before finalizing:
 - [ ] Each card has `TEMA` and `TAG`.
 - [ ] The decisive wording in each verso is bolded.
 - [ ] Official legal/CPC/accounting/NBC-CFC source blocks are appended at the end of the verso in `font-size: 65%` when applicable and verified.
+- [ ] If adding a “Como caiu” note for prior-concurso cards, it identifies the concurso/year, matéria, and assunto/subassunto (for example, `SEFAZ RN 2025 — Português: assunto sintaxe / regência...`) and uses only one `<br>` before the block.
 - [ ] Final report counts cards, C/E, cloze, and explains the quantity.
