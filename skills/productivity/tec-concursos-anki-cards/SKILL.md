@@ -190,11 +190,31 @@ Back-side pattern for support:
 
 If no reliable support can be retrieved without overreaching, omit the citation rather than guessing.
 
-## Official Source Blocks on the Back Side
+## Official Source Blocks and Short Term Glosses on the Back Side
 
 For law/CPC/accounting/legal cards, the Anki version should include the relevant lei seca/CPC/source wording at the **end of the verso** in a small block, following Higor's established Anki convention.
 
+For **Português/Gramática** cards, when the card uses a technical term that may be the learning bottleneck — e.g. complemento nominal, oração subordinada completiva nominal, adjunto adnominal, sujeito paciente, se apassivador, índice de indeterminação do sujeito, regência, crase, próclise, conectivo concessivo/causal/conclusivo etc. — add a tiny explanatory gloss at the end of the `VERSO`, in the same spirit as lei seca blocks: subordinate, compact, and not a mini-aula. The gloss should explain only the term needed for that card, preferably in 1 sentence or 1 short line per term.
+
 Use this only in the card that will be inserted into Anki, and show it in the approval draft when feasible so Higor can approve the exact final content.
+
+### Portuguese term gloss block
+
+Use `HERMES_TERMS_SOURCE_V1` for compact grammar/Português definitions. This is not an official-source quote; it is a microgloss to prevent Higor from having to remember the meaning of the technical label before answering the actual card.
+
+HTML pattern:
+
+```html
+<br><br><!-- HERMES_TERMS_SOURCE_V1 --><div style="font-size: 65%; text-align: left;"><b>Termo(s):</b><br><b>[termo]</b>: [definição mínima].<br><b>[termo 2]</b>: [definição mínima, se indispensável].</div><!-- /HERMES_TERMS_SOURCE_V1 -->
+```
+
+Rules:
+
+1. Add only terms that appear in the card or are essential to understand the answer.
+2. Keep each definition very short; default to one line per term.
+3. Do not turn the gloss into a grammar lesson, list of exceptions, or source block.
+4. If editing/reinserting a card, remove/replace any old `HERMES_TERMS_SOURCE_V1` block instead of duplicating it.
+5. For Português cards, favor these term glosses when the verso names a technical classification without defining it.
 
 ### Legal source block
 
