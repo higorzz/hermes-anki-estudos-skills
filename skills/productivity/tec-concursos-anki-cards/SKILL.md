@@ -44,8 +44,9 @@ Default workflow:
 
 1. Generate the cards from the Tec Concursos source and show them in the normal output format, including `TEMA`, `TAG`, front, back, and final report.
 2. Wait for Higor's approval or requested edits. Do not write to Anki before approval.
-3. After approval, insert the approved cards into Anki using the local Anki workflow. Load/follow `anki-card-editing` for safety and database handling.
-4. Verify persistence after insertion and report concisely what was added.
+3. If Higor approves but adds quality conditions (for example: “dê contexto”, “explique termos”, “ponha referências/lei seca”, “garanta cards úteis”), treat that as approval **with mandatory revisions**: revise the draft first, then insert the revised version.
+4. After approval, insert the approved cards into Anki using the local Anki workflow. Load/follow `anki-card-editing` for safety and database handling.
+5. Verify persistence after insertion and report concisely what was added.
 
 Approval phrases such as "aprovado", "pode adicionar", "coloca no Anki", "manda pro Anki", "ok", or equivalent mean: proceed to Anki insertion using the last approved card set, unless Higor changed the content.
 
@@ -186,13 +187,17 @@ Rules:
 
 Back-side pattern for support:
 
-`GABARITO: ✅ Certo — ... **trecho decisivo** ... (Base: art. X da Lei Y, quando aplicável).`
+`GABARITO: ✅ Certo — [explicação principal do porquê a assertiva está certa/errada, com o trecho decisivo em **negrito**].`
 
-If no reliable support can be retrieved without overreaching, omit the citation rather than guessing.
+Then, when the card comes from a prior concurso/question, add a short subordinate note **after** the main explanation, not as the explanation itself:
+
+`<br><br><div style="font-size: 65%; text-align: left;"><b>Como caiu:</b> [1 frase curta sobre como o concurso cobrou o ponto].</div>`
+
+If applicable, append the official legal/CPC/NBC source block after the “Como caiu” note. The main `VERSO` must never be only “foi cobrado em...” — it must teach why the C/E answer is correct. If no reliable support can be retrieved without overreaching, omit the citation rather than guessing.
 
 ## Official Source Blocks and Short Term Glosses on the Back Side
 
-For law/CPC/accounting/legal cards, the Anki version should include the relevant lei seca/CPC/source wording at the **end of the verso** in a small block, following Higor's established Anki convention.
+For law/CPC/accounting/legal cards, the Anki version should include the relevant lei seca/CPC/source wording at the **end of the verso** in a small block, following Higor's established Anki convention. This still applies when cards are generated from an exam-topic analysis rather than from a pasted statute: if the card's subject is Direito/Direito Financeiro/Legislação Tributária, Contabilidade/Custos, or Auditoria, add the appropriate official/normative support block (`HERMES_LEGAL_SOURCE_V1`, `HERMES_CPC_SOURCE_V1`, or `HERMES_NBC_SOURCE_V1`) whenever a reliable supporting source can be identified. A line citing the banca/prova is provenance, not a replacement for the official/normative support block.
 
 For **Português/Gramática** cards, when the card uses a technical term that may be the learning bottleneck — e.g. complemento nominal, oração subordinada completiva nominal, adjunto adnominal, sujeito paciente, se apassivador, índice de indeterminação do sujeito, regência, crase, próclise, conectivo concessivo/causal/conclusivo etc. — add a tiny explanatory gloss at the end of the `VERSO`, in the same spirit as lei seca blocks: subordinate, compact, and not a mini-aula. The gloss should explain only the term needed for that card, preferably in 1 sentence or 1 short line per term.
 
@@ -358,13 +363,15 @@ For Certo/Errado cards:
 CARD 1
 
 TEMA: [DISCIPLINA — ASSUNTO AMPLO]
-TAG: [materia::assunto_amplo]
+TAG: [materia::assunto_amplo::subassunto]
 
 FRENTE:
 [assertiva objetiva de Certo ou Errado]
 
 VERSO:
-GABARITO: [✅ Certo / ❌ Errado] — [justificativa curta, com o trecho decisivo em **negrito**]
+GABARITO: [✅ Certo / ❌ Errado] — [explicação principal do porquê está certo/errado, com o trecho decisivo em **negrito**].
+<br><br><div style="font-size: 65%; text-align: left;"><b>Como caiu:</b> [quando for de concurso anterior, 1 frase curta sobre a forma de cobrança].</div>
+[bloco HERMES_LEGAL/CPC/NBC/TERMS_SOURCE_V1, se aplicável]
 
 ────────────────────────
 ```
