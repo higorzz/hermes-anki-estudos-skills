@@ -120,6 +120,7 @@ Rules:
 2. The front is a short, objective exam-style assertion.
 3. When it improves recall, especially in Portuguese/grammar cards or rules that are easier to recognize in context, put a **short concrete example directly in the front** and make the assertion about that example. Higor explicitly prefers examples on the front to emphasize the tested rule when it makes sense. Example pattern: `Em “houve problemas”, ...`; avoid long examples that turn the front into a mini-aula.
    - For **Português** cards, the front must contain enough context to stand alone in Anki. Do not use a bare fragment if the rule depends on interpretation, regência, pontuação, coesão, reescrita, or semantic value. Prefer a short full sentence/period plus the assertion, e.g. `No período “...”, ...`. Higor explicitly corrected that Portuguese cards need more context so the card makes sense during review.
+   - For **cards extracted from question scenarios, tables, graphs, functions, or numerical examples**, include enough of the original scenario/data in the front so the card makes sense standalone. Do not write vague references such as “a tabela mostra...” unless the relevant table values are present in the card front.
 4. The back has the gabarito and a brief justification.
 5. Avoid open prompts like "conceitue", "explique" or "quais são".
 6. Do not spoil the exact tested trick in `TEMA`; use broad subject labels.
@@ -160,6 +161,8 @@ Prefer cloze for:
 - technical vocabulary where the exam trick is the missing word itself.
 
 Do not use cloze just to vary format: use it because the missing element is what Higor needs to retrieve. For batches in Matemática Financeira, Estatística, RLM, Economia, Contabilidade, TI, and other formula/list-heavy subjects, actively consider a cloze-heavy batch before choosing C/E.
+
+When writing cloze/omissão cards for Higor, make the prompt explicit enough that he knows exactly what to complete: provide context, start the sentence or formula, and leave blanks for the specific terms/numbers/components to retrieve. Avoid lacunas that force him to infer the entire reasoning frame from scratch.
 
 ## Certo/Errado Proportion
 
