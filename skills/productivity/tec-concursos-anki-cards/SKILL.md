@@ -287,17 +287,23 @@ Every card must include a standardized `TAG:` line in the approval draft and mus
 
 Use lowercase, ASCII, no spaces, separated by `::`.
 
-Required format:
+Required default format:
 
 `materia::assunto_amplo::subassunto`
 
-Always use exactly 3 hierarchy levels. Do **not** create 2-level tags such as `economia::politica_monetaria`, because Higor wants the Anki tag dropdown to expose a selectable subassunto level. If the subtopic is genuinely broad, use a stable third level such as `geral` or `instrumentos`, but prefer a meaningful subassunto.
+Use at least 3 hierarchy levels. Do **not** create 2-level tags such as `economia::politica_monetaria`, because Higor wants the Anki tag dropdown to expose a selectable subassunto level. If the subtopic is genuinely broad, use a stable third level such as `geral` or `instrumentos`, but prefer a meaningful subassunto.
+
+For norm/CPC/NBC-based accounting/auditing cards, use 4 hierarchy levels when needed to keep the Anki tree readable:
+
+`materia::norma::grupo::subassunto`
+
+Examples: `contabilidade::cpc_03::dfc::metodo_direto`, `contabilidade::cpc_09::dva::estrutura`, `contabilidade::cpc_26::demonstracoes_contabeis::notas_explicativas`. Do not flatten the group into the leaf (`dfc_metodo_direto`) when it should appear as a folder under the CPC.
 
 Rules:
 
 1. Keep the same tag for the same correlated theme across sessions.
 2. Do not create hyper-specific one-off tags for tiny variations.
-3. Prefer stable fiscal-exam taxonomy over the wording of the material. For CPC-specific accounting cards, keep the CPC number as the second hierarchy level and put the topic in the third level, e.g. `contabilidade::cpc_03::dfc_metodo_direto`, `contabilidade::cpc_09::dva_estrutura`, `contabilidade::cpc_23::politicas_estimativas_erros`. Do not create merged or artificial CPC buckets like `cpc_03_09`; if a card compares two CPCs, either choose the primary CPC tag or add two separate valid CPC tags.
+3. Prefer stable fiscal-exam taxonomy over the wording of the material. For CPC-specific accounting cards, use `contabilidade::cpc_XX::grupo::subassunto` when the CPC covers a named demonstrative/topic group, e.g. `contabilidade::cpc_03::dfc::metodo_direto`, `contabilidade::cpc_09::dva::estrutura`, `contabilidade::cpc_26::demonstracoes_contabeis::notas_explicativas`. Keep CPC content under its CPC whenever there is a clear CPC home; avoid leaving CPC-backed accounting cards in broad buckets like `contabilidade::ativos::*` or `contabilidade::demonstracoes_contabeis::*`. Do not create merged or artificial CPC buckets like `cpc_03_09`; if a card compares two CPCs, either choose the primary CPC tag or add two separate valid CPC tags.
 4. Use singular/plural consistently by common subject name; do not alternate synonyms.
 5. If a card fits multiple subjects, use the primary subject tag and optionally one secondary tag only when it materially helps retrieval.
 6. `TEMA` is human-facing and can be uppercase with accents; `TAG` is Anki-facing and must stay normalized.
@@ -318,7 +324,7 @@ Do not make `TEMA` reveal the trick of the card.
 
 ### Canonical tag examples
 
-The current approved Anki standard for Área Fiscal is lowercase ASCII with **exactly 3 `::` levels**. Existing Área Fiscal tags were normalized to this style; keep future cards consistent with these shapes.
+The current approved Anki standard for Área Fiscal is lowercase ASCII with **at least 3 `::` levels**. Use 3 levels by default and 4 levels for norm/CPC/NBC trees when the middle level should be browsable (for example CPC → DFC → method). Keep future cards consistent with these shapes.
 
 - `direito_administrativo::poder_de_policia`
 - `direito_administrativo::atos_administrativos::atributos`
@@ -334,12 +340,13 @@ The current approved Anki standard for Área Fiscal is lowercase ASCII with **ex
 - `direito_tributario::obrigacao_tributaria`
 - `legislacao_tributaria::icms`
 - `legislacao_tributaria::iss`
-- `contabilidade::cpc_03::dfc_metodo_direto`
-- `contabilidade::cpc_03::dfc_metodo_indireto`
-- `contabilidade::cpc_09::dva_estrutura`
+- `contabilidade::cpc_03::dfc::metodo_direto`
+- `contabilidade::cpc_03::dfc::metodo_indireto`
+- `contabilidade::cpc_09::dva::estrutura`
+- `contabilidade::cpc_26::demonstracoes_contabeis::notas_explicativas`
 - `contabilidade::cpc_23::politicas_estimativas_erros`
 - `contabilidade::cpc_46::mensuracao_valor_justo`
-- `contabilidade::ativos::depreciacao`
+- `contabilidade::cpc_27::ativo_imobilizado::depreciacao`
 - `contabilidade::demonstracoes_contabeis`
 - `auditoria::evidencia_de_auditoria`
 - `afo::orcamento_publico::principios`

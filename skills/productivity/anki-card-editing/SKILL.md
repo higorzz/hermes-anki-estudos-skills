@@ -14,8 +14,9 @@ Scope boundary: this skill is the **database/Anki operations skill**. It does no
 1. Locate the Anki profile and collection, commonly on Windows via WSL:
    - `/mnt/c/Users/<user>/AppData/Roaming/Anki2/<profile>/collection.anki2`
 2. Check whether Anki is running before writes. If it is, ask the user to close Anki or proceed only with read-only inspection/copy-based analysis.
-3. Before any write, create a timestamped backup next to `collection.anki2`.
-4. Prefer editing a single note first as a sample before bulk changes.
+3. If `collection.anki2-wal` exists and is non-empty even though no Anki process is visible, do not write immediately. Ask Higor to confirm Anki is closed; after confirmation, preserve timestamped pre-checkpoint copies of `collection.anki2`, `collection.anki2-wal`, and `collection.anki2-shm`, run `PRAGMA wal_checkpoint(FULL)`, then continue only if `integrity_check` is ok.
+4. Before any write, create a timestamped backup next to `collection.anki2`.
+5. Prefer editing a single note first as a sample before bulk changes.
 5. After writing, verify by reopening the database read-only and checking:
    - target note/card fields contain the intended text;
    - stale text was removed;
@@ -23,7 +24,8 @@ Scope boundary: this skill is the **database/Anki operations skill**. It does no
    - for newly inserted/edited Direito, Legislação Tributária, Contabilidade/CPC, Auditoria/NBC, and correlated official-standard cards, every target note has the expected `HERMES_LEGAL_SOURCE_V1`, `HERMES_CPC_SOURCE_V1`, or `HERMES_NBC_SOURCE_V1` marker unless explicitly documented as source-unavailable;
    - `pragma integrity_check` returns `ok`.
 6. If WAL files exist or a prior edit does not appear in Anki, force a WAL checkpoint after commit, then reopen the DB from disk to verify persistence.
-7. For direct insertion of approved new cards, see `references/creating-approved-cards.md` for the known-good workflow: Basic note insertion, Área Fiscal deck mapping, 3-level tags, legal-source blocks, and the stale `-shm`/empty-WAL pitfall.
+7. When Higor reports repeated large Anki sync counts after Hermes/direct-SQLite edits, diagnose sync state read-only before proposing repairs: check `integrity_check`, WAL/SHM side files, `usn=-1` counts for `notes`/`cards`/`graves`, recent `mod` buckets, and large non-negative `usn` clusters. If `usn=-1` is zero and integrity is ok, the local DB is not sitting with thousands of dirty Hermes edits; large download counts likely come from AnkiWeb/mobile/previous Anki corrections. See `references/sync-diagnostics-direct-sqlite-edits.md`.
+8. For direct insertion of approved new cards, see `references/creating-approved-cards.md` for the known-good workflow: Basic note insertion, Área Fiscal deck mapping, 3-level tags, legal-source blocks, and the stale `-shm`/empty-WAL pitfall.
 8. **Pre-insertion source-block audit for study cards:** before inserting any generated Direito, Direito Financeiro/AFO, Legislação Tributária, Contabilidade/Custos, or Auditoria cards, scan the approved batch and verify each applicable card already has the expected official/normative marker (`HERMES_LEGAL_SOURCE_V1`, `HERMES_CPC_SOURCE_V1`, or `HERMES_NBC_SOURCE_V1`) unless the draft explicitly marks source unavailable. A generic “Fonte: banca/prova” line is not a substitute for these blocks. Do not report success until this audit passes; if missing, enrich the draft/DB first and re-verify marker counts.
 
 ## Modern Anki SQLite notes
@@ -53,8 +55,9 @@ When creating, inserting, or bulk-normalizing Higor's Área Fiscal Anki cards, u
 - no accents, no spaces, no hyphens;
 - words separated with `_`;
 - hierarchy separated with `::`;
-- required shape: `materia::assunto_amplo::subassunto`;
-- always use exactly 3 hierarchy levels so Anki exposes a dropdown for the subassunto; do not leave broad two-level tags like `economia::politica_monetaria`;
+- default shape: `materia::assunto_amplo::subassunto`;
+- use at least 3 hierarchy levels so Anki exposes a dropdown for the subassunto; do not leave broad two-level tags like `economia::politica_monetaria`;
+- for norm/CPC/NBC-based trees, use 4 levels when the middle topic should be browsable, e.g. `contabilidade::cpc_03::dfc::metodo_direto` and `contabilidade::cpc_09::dva::estrutura`;
 - if the card is broad, use a stable third level such as `geral` or `instrumentos`, but prefer a meaningful subassunto;
 - use deck/subdeck for broad subject placement and tags for precise retrieval;
 - do not place the human-facing `TEMA` at the start of the card front by default, because it can cue the answer.
@@ -139,3 +142,5 @@ Higor strongly dislikes repeated mid-task narration when an Anki bulk edit is al
 - `references/bulk-legal-accounting-enrichment.md` — bulk enrichment pattern for Higor's legal/accounting cards, official source URLs, idempotent markers, and formatting preferences.
 - `references/legal-block-trimming-pitfalls.md` — Higor's correction that long laws/articles must be trimmed to the exact supporting part, plus pitfalls from Planalto extraction and oversized-block verification.
 - `references/cpc-accounting-wording.md` — CPC/Contabilidade enrichment pattern: replace terms-only blocks with concise official CPC item wording from CPC PDFs, using `HERMES_CPC_SOURCE_V1`.
+- `references/anki-colpkg-backup.md` — create an importable `.colpkg` backup from WSL using a SQLite snapshot, zstd-compressed collection/media map, and full media payloads; includes verification steps.
+- `references/sync-diagnostics-direct-sqlite-edits.md` — read-only diagnostic workflow for large/repeated sync counts after Hermes direct SQLite edits, including `usn=-1`, WAL/SHM, integrity, and large `usn` cluster interpretation.
