@@ -153,6 +153,7 @@ Use cloze/omissão de palavras **com mais frequência quando for pertinente**, e
 Prefer cloze for:
 
 - formulas, equations, symbols, and calculation patterns;
+- PDF/aula/resumo sections that explicitly present a “fórmula”, “passo a passo”, “estrutura”, “método” or cálculo recorrente — proactively create at least a few formula/mechanics cards instead of only conceptual C/E cards;
 - paired distinctions and contrastive concepts (for example, “por fora” vs. “por dentro”, “linear” vs. “exponencial”);
 - lists, roles, ordem, requisitos cumulativos;
 - deadlines, percentages, thresholds, and exact numbers;
@@ -194,11 +195,15 @@ Back-side pattern for support:
 
 Important for Anki: fields render HTML, not Markdown. Do **not** leave Markdown emphasis like `**texto**` in fronts/backs; convert emphasis to `<b>texto</b>` before inserting or updating notes.
 
-Then, when the card comes from a prior concurso/question, add a short subordinate note **after** the main explanation, not as the explanation itself:
+Only mention where the question came from (concurso/banca/ano/prova) when Higor explicitly asks for that provenance. By default, do **not** add prior-concurso provenance blocks to the card back; the back should explain the rule and then go straight to any official/normative source block.
+
+Do **not** refer generically to the user's PDF/material/resumo/síntese in the card text or verso. Avoid phrases such as “o PDF destaca”, “a síntese diz”, “conforme o material”, “no material enviado” or similar. The card should teach the rule directly as if it stands alone in Anki. The only source references allowed by default are official/normative blocks (lei seca, CPC/NBC/CFC etc.) at the end of the verso, or explicit provenance when Higor asks for it.
+
+If Higor explicitly asks to include provenance, add one short subordinate note **after** the main explanation, not as the explanation itself:
 
 `<br><div style="font-size: 65%; text-align: left;">[Concurso/ano — assunto X / subassunto Y. 1 frase curta sobre a forma de cobrança].</div>`
 
-Use only one `<br>` before this prior-concurso provenance block (not `<br><br>`), so it appears close to the main explanation. Do not label it “Como caiu”; the line should start directly with the exam, e.g. `SEFAZ RN 2025 — assunto sintaxe / regência. A banca cobrou reescrita preservando regência e sentido.` The wording must identify the source exam and assunto/subassunto, but omit the matéria label because deck/tag already show it.
+Use only one `<br>` before this requested provenance block (not `<br><br>`), so it appears close to the main explanation. Do not label it “Como caiu”; the line should start directly with the exam, e.g. `SEFAZ RN 2025 — assunto sintaxe / regência. A banca cobrou reescrita preservando regência e sentido.` The wording must identify the source exam and assunto/subassunto, but omit the matéria label because deck/tag already show it.
 
 If applicable, append the official legal/CPC/NBC source block after the “Como caiu” note. The main `VERSO` must never be only “foi cobrado em...” — it must teach why the C/E answer is correct. If no reliable support can be retrieved without overreaching, omit the citation rather than guessing.
 
@@ -217,7 +222,7 @@ Use `HERMES_TERMS_SOURCE_V1` for compact grammar/Português definitions. This is
 HTML pattern:
 
 ```html
-<br><br><!-- HERMES_TERMS_SOURCE_V1 --><div style="font-size: 65%; text-align: left;"><b>Termo(s):</b><br><b>[termo]</b>: [definição mínima].<br><b>[termo 2]</b>: [definição mínima, se indispensável].</div><!-- /HERMES_TERMS_SOURCE_V1 -->
+<br><!-- HERMES_TERMS_SOURCE_V1 --><div style="font-size: 65%; text-align: left;"><b>Termo(s):</b><br><b>[termo]</b>: [definição mínima].<br><b>[termo 2]</b>: [definição mínima, se indispensável].</div><!-- /HERMES_TERMS_SOURCE_V1 -->
 ```
 
 Rules:
@@ -235,7 +240,7 @@ Use official Planalto/Presidência or another official source. Keep only the min
 HTML pattern:
 
 ```html
-<br><br><!-- HERMES_LEGAL_SOURCE_V1 --><div style="font-size: 65%; text-align: left;"><div><b>[Norma, dispositivo]</b><br>[texto literal oficial mínimo que sustenta o card]</div><br><div>Fonte oficial: [órgão/site]. Consulta em DD/MM/AAAA.</div></div><!-- /HERMES_LEGAL_SOURCE_V1 -->
+<br><!-- HERMES_LEGAL_SOURCE_V1 --><div style="font-size: 65%; text-align: left;"><div><b>[Norma, dispositivo]</b><br>[texto literal oficial mínimo que sustenta o card]</div><br><div>Fonte oficial: [órgão/site]. Consulta em DD/MM/AAAA.</div></div><!-- /HERMES_LEGAL_SOURCE_V1 -->
 ```
 
 ### CPC/accounting source block
@@ -245,7 +250,7 @@ Use official CPC/CFC/CVM/Receita/Tesouro/STN sources as applicable. For CPC, pre
 HTML pattern:
 
 ```html
-<br><br><!-- HERMES_CPC_SOURCE_V1 --><div style="font-size: 65%; text-align: left;"><div><b>[CPC/Norma, item]</b><br>[texto literal oficial mínimo que sustenta o card]</div><br><div>Fonte oficial: Comitê de Pronunciamentos Contábeis (CPC). Consulta em DD/MM/AAAA.</div></div><!-- /HERMES_CPC_SOURCE_V1 -->
+<br><!-- HERMES_CPC_SOURCE_V1 --><div style="font-size: 65%; text-align: left;"><div><b>[CPC/Norma, item]</b><br>[texto literal oficial mínimo que sustenta o card]</div><br><div>Fonte oficial: Comitê de Pronunciamentos Contábeis (CPC). Consulta em DD/MM/AAAA.</div></div><!-- /HERMES_CPC_SOURCE_V1 -->
 ```
 
 ### NBC/CFC auditing source block
@@ -257,7 +262,7 @@ Use only the exact item/subitem needed for the card; do not paste a whole NBC or
 HTML pattern:
 
 ```html
-<br><br><!-- HERMES_NBC_SOURCE_V1 --><div style="font-size: 65%; text-align: left;"><div><b>[NBC TA/NBC PA/NBC TI, item]</b><br>[texto literal oficial mínimo que sustenta o card]</div><br><div>Fonte oficial: Conselho Federal de Contabilidade (CFC). Consulta em DD/MM/AAAA.</div></div><!-- /HERMES_NBC_SOURCE_V1 -->
+<br><!-- HERMES_NBC_SOURCE_V1 --><div style="font-size: 65%; text-align: left;"><div><b>[NBC TA/NBC PA/NBC TI, item]</b><br>[texto literal oficial mínimo que sustenta o card]</div><br><div>Fonte oficial: Conselho Federal de Contabilidade (CFC). Consulta em DD/MM/AAAA.</div></div><!-- /HERMES_NBC_SOURCE_V1 -->
 ```
 
 Rules:
