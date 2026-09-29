@@ -297,7 +297,7 @@ For norm/CPC/NBC-based accounting/auditing cards, use 4 hierarchy levels when ne
 
 `materia::norma::grupo::subassunto`
 
-Examples: `contabilidade::cpc_03::dfc::metodo_direto`, `contabilidade::cpc_09::dva::estrutura`, `contabilidade::cpc_26::demonstracoes_contabeis::notas_explicativas`. Do not flatten the group into the leaf (`dfc_metodo_direto`) when it should appear as a folder under the CPC.
+Examples: `contabilidade::cpc_03::dfc::metodo_direto`, `contabilidade::cpc_09::dva::estrutura`, `contabilidade::cpc_26::demonstracoes_contabeis::notas_explicativas`, `contabilidade::lei_6404::patrimonio_liquido::reserva_legal`. Do not flatten the group into the leaf (`dfc_metodo_direto`) when it should appear as a folder under the CPC/lei/norma.
 
 Rules:
 

@@ -57,7 +57,7 @@ When creating, inserting, or bulk-normalizing Higor's Área Fiscal Anki cards, u
 - hierarchy separated with `::`;
 - default shape: `materia::assunto_amplo::subassunto`;
 - use at least 3 hierarchy levels so Anki exposes a dropdown for the subassunto; do not leave broad two-level tags like `economia::politica_monetaria`;
-- for norm/CPC/NBC-based trees, use 4 levels when the middle topic should be browsable, e.g. `contabilidade::cpc_03::dfc::metodo_direto` and `contabilidade::cpc_09::dva::estrutura`;
+- for norm/CPC/NBC/Lei-based trees, use 4 levels when the middle topic should be browsable, e.g. `contabilidade::cpc_03::dfc::metodo_direto`, `contabilidade::cpc_09::dva::estrutura`, and `contabilidade::lei_6404::patrimonio_liquido::reserva_legal`;
 - if the card is broad, use a stable third level such as `geral` or `instrumentos`, but prefer a meaningful subassunto;
 - use deck/subdeck for broad subject placement and tags for precise retrieval;
 - do not place the human-facing `TEMA` at the start of the card front by default, because it can cue the answer.
