@@ -297,7 +297,7 @@ Rules:
 
 1. Keep the same tag for the same correlated theme across sessions.
 2. Do not create hyper-specific one-off tags for tiny variations.
-3. Prefer stable fiscal-exam taxonomy over the wording of the material.
+3. Prefer stable fiscal-exam taxonomy over the wording of the material. For CPC-specific accounting cards, keep the CPC number near the top of the hierarchy and add the common subject in the same second-level tag when it improves navigation, e.g. `contabilidade::cpc_03_dfc::metodo_direto` and `contabilidade::cpc_09_dva::estrutura`, rather than inverted shapes like `contabilidade::dfc::cpc_03`.
 4. Use singular/plural consistently by common subject name; do not alternate synonyms.
 5. If a card fits multiple subjects, use the primary subject tag and optionally one secondary tag only when it materially helps retrieval.
 6. `TEMA` is human-facing and can be uppercase with accents; `TAG` is Anki-facing and must stay normalized.
@@ -334,6 +334,10 @@ The current approved Anki standard for Área Fiscal is lowercase ASCII with **ex
 - `direito_tributario::obrigacao_tributaria`
 - `legislacao_tributaria::icms`
 - `legislacao_tributaria::iss`
+- `contabilidade::cpc_03_dfc::metodo_direto`
+- `contabilidade::cpc_03_dfc::metodo_indireto`
+- `contabilidade::cpc_09_dva::estrutura`
+- `contabilidade::cpc_03_09_dfc_dva::comparativo`
 - `contabilidade::cpc_23::politicas_estimativas_erros`
 - `contabilidade::cpc_46::mensuracao_valor_justo`
 - `contabilidade::ativos::depreciacao`
