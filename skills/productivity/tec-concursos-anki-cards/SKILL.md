@@ -165,6 +165,8 @@ Do not use cloze just to vary format: use it because the missing element is what
 
 When writing cloze/omissão cards for Higor, make the prompt explicit enough that he knows exactly what to complete: provide context, start the sentence or formula, and leave blanks for the specific terms/numbers/components to retrieve. Avoid lacunas that force him to infer the entire reasoning frame from scratch.
 
+For cloze cards with `VERSO/OBS`, keep the observation short — usually one direct sentence — and, for the Anki `Back Extra` field, start the observation with a single `<br>` so it renders separated from the cloze answer. Do not use this as a license for long explanations: the front should carry the recall burden; `VERSO/OBS` only clarifies the rule, common trap, or calculation logic.
+
 ## Certo/Errado Proportion
 
 For batches with several cards, balance Certo and Errado around 50/50 without sacrificing quality. Higor has explicitly corrected that batches with noticeably more Certo than Errado are not varied enough; for even-sized thematic batches, default to an exact 50/50 split unless the source itself makes that impossible.
