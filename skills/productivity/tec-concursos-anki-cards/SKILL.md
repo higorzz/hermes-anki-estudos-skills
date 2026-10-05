@@ -58,6 +58,12 @@ The source can be a question platform, a statute, a specific article, an edital,
 
 For SEFAZ/SEFA recent-exam reconnaissance — e.g. “últimas SEFAZ”, “quais já tiveram prova aplicada”, “pega o gabarito e resume os assuntos cobrados” — use `references/sefaz-recent-exam-recon.md`. Key rule: distinguish edital publicado from prova aplicada/homologada, annotate banca/status, and summarize assunto patterns by matéria without automatically creating Anki cards.
 
+For Contabilidade Geral/Avançada cards based on exam questions, use `references/accounting-cpc-source-map.md` as a quick map of common CPC/ICPC items. If a card tests a normative accounting rule with a clear CPC/ICPC support, include the `HERMES_CPC_SOURCE_V1` block in the approval draft before insertion; do not wait for Higor to ask afterward.
+
+For concurso-based Português batches that Higor approves for Anki insertion, pair this skill's card-generation rules with `anki-card-editing` reference `references/portugues-concurso-subdeck-drip.md`: subdeck drip release (usually 5 new/day), normalized `concurso::*` tags, written provenance in the verso, and a term-gloss marker audit.
+
+For multi-subject concurso batches, keep the approval draft and insertion plan separated by matéria/deck. Higor explicitly corrected that he wants a `Concursos recentes` subdeck **for each matéria**, not one unified deck for combined subjects. Examples: `2018::Direito Tributário::Concursos recentes`, `2018::Reforma Tributária::Concursos recentes`, `2018::Contabilidade Geral e Avançada::Concursos recentes`, `2018::Contabilidade de Custos::Concursos recentes`, `2018::Direito Administrativo::Concursos recentes`, `2018::Direito Constitucional::Concursos recentes`. Use the same 5-new/day configuration pattern as the existing Português concursos recentes subdeck when inserting after approval.
+
 Apply these source rules:
 
 1. If the source is a solved question, prioritize the explanation/gabarito and the exact tested gap.
@@ -77,7 +83,9 @@ Even when the source is legal, frame the point by fiscal-exam logic, not by judi
 
 ## Core Quantity Rule
 
-Default: **1 relevant point = 1 flashcard**, but keep batches lean. Higor prefers fewer cards focused on what is most likely to be cobrando/recorrente, rather than exhaustive coverage of every exception.
+Default: **1 relevant point = 1 flashcard**, but keep batches lean. Higor prefers fewer cards focused on what is most likely to be cobrado/recorrente, rather than exhaustive coverage of every exception.
+
+When Higor sends a mixed batch and asks for "quantos achar necessário", calibrate the quantity by concurso incidence and by the user's marked difficulty: make more cards for high-frequency, high-confusion themes and fewer cards for low-incidence subjects or peripheral details. Use recent objective-exam relevance as the filter: Direito Penal incidental in fiscal-area study usually receives fewer, very targeted cards; Direito Civil/responsabilidade civil and jurisprudência/súmulas recorrentes can receive a moderate batch when the source contains common banca traps; do not equalize quantity across matérias by default.
 
 When analyzing aulas/PDFs, first map what appears most in the theory and questions, then draft a compact batch from those high-yield patterns. Avoid low-frequency edge cases unless the material itself emphasizes them or Higor asks for them.
 
@@ -167,6 +175,8 @@ When writing cloze/omissão cards for Higor, make the prompt explicit enough tha
 
 For cloze cards with `VERSO/OBS`, keep the observation short — usually one direct sentence — and, for the Anki `Back Extra` field, start the observation with a single `<br>` so it renders separated from the cloze answer. Do not use this as a license for long explanations: the front should carry the recall burden; `VERSO/OBS` only clarifies the rule, common trap, or calculation logic.
 
+For Matemática Financeira specifically, do not let the batch become only formula recall. Higor liked the Português cards because they are contextual and exam-like; apply the same idea to math by combining formula clozes with short scenario/procedure cards and plausible Certo/Errado traps. Good traps include nominal vs effective rate, real rate vs apparent/inflation, commercial vs rational discount (`Ac < Ar`, `Dc > Dr`), SAC amortization vs Price installment, series antecipada vs postecipada, data focal choice, and multiply-vs-divide when transporting values.
+
 ## Certo/Errado Proportion
 
 For batches with several cards, balance Certo and Errado around 50/50 without sacrificing quality. Higor has explicitly corrected that batches with noticeably more Certo than Errado are not varied enough; for even-sized thematic batches, default to an exact 50/50 split unless the source itself makes that impossible.
@@ -201,21 +211,34 @@ Only mention where the question came from (concurso/banca/ano/prova) when Higor 
 
 Do **not** refer generically to the user's PDF/material/resumo/síntese in the card text or verso. Avoid phrases such as “o PDF destaca”, “a síntese diz”, “conforme o material”, “no material enviado” or similar. The card should teach the rule directly as if it stands alone in Anki. The only source references allowed by default are official/normative blocks (lei seca, CPC/NBC/CFC etc.) at the end of the verso, or explicit provenance when Higor asks for it.
 
-If Higor explicitly asks to include provenance, add one short subordinate note **after** the main explanation, not as the explanation itself:
+If Higor explicitly asks to include provenance, or if he asks for cards **based on previous concursos/provas** and says he wants the concurso identified, add one short subordinate note **after** the main explanation, not as the explanation itself:
 
 `<br><div style="font-size: 65%; text-align: left;">[Concurso/ano — assunto X / subassunto Y. 1 frase curta sobre a forma de cobrança].</div>`
 
 Use only one `<br>` before this requested provenance block (not `<br><br>`), so it appears close to the main explanation. Do not label it “Como caiu”; the line should start directly with the exam, e.g. `SEFAZ RN 2025 — assunto sintaxe / regência. A banca cobrou reescrita preservando regência e sentido.` The wording must identify the source exam and assunto/subassunto, but omit the matéria label because deck/tag already show it.
 
+For cards generated from a concurso/prova mapping, also add a normalized concurso tag in addition to the subject tag, for example `concurso::sefaz_rn::2026`, `concurso::sefaz_am::2022`, `concurso::receita_federal::2022`, or `concurso::iss_sp::2023`. Higor explicitly corrected that concurso-based cards should carry both: (1) the concurso tag and (2) written provenance in the verso.
+
 If applicable, append the official legal/CPC/NBC source block after the “Como caiu” note. The main `VERSO` must never be only “foi cobrado em...” — it must teach why the C/E answer is correct. If no reliable support can be retrieved without overreaching, omit the citation rather than guessing.
+
+When Higor explicitly says the cards are based on concursos/provas, especially prior-exam topic coverage or gap-filling from recent concursos, provenance becomes mandatory rather than optional:
+
+- add a normalized concurso tag to every affected card, e.g. `concurso::sefaz_am::2022`, `concurso::receita_federal::2022`, `concurso::sefaz_ac::2023`, `concurso::sefaz_rn::2026`;
+- include a short subordinate line in the `VERSO` identifying the concurso/year and how the assunto was cobrando;
+- keep the card’s main tag as the subject taxonomy tag (`portugues::*`, `direito_*::*`, etc.) and add the concurso tag as a second tag, not a replacement;
+- still keep `TEMA` out of the Anki front unless Higor asks otherwise.
 
 ## Official Source Blocks and Short Term Glosses on the Back Side
 
 For law/CPC/accounting/legal cards, the Anki version should include the relevant lei seca/CPC/source wording at the **end of the verso** in a small block, following Higor's established Anki convention. This still applies when cards are generated from an exam-topic analysis rather than from a pasted statute: if the card's subject is Direito/Direito Financeiro/Legislação Tributária, Contabilidade/Custos, or Auditoria, add the appropriate official/normative support block (`HERMES_LEGAL_SOURCE_V1`, `HERMES_CPC_SOURCE_V1`, or `HERMES_NBC_SOURCE_V1`) whenever a reliable supporting source can be identified. A line citing the banca/prova is provenance, not a replacement for the official/normative support block.
 
-For **Português/Gramática** cards, when the card uses a technical term that may be the learning bottleneck — e.g. complemento nominal, oração subordinada completiva nominal, adjunto adnominal, sujeito paciente, se apassivador, índice de indeterminação do sujeito, regência, crase, próclise, conectivo concessivo/causal/conclusivo etc. — add a tiny explanatory gloss at the end of the `VERSO`, in the same spirit as lei seca blocks: subordinate, compact, and not a mini-aula. The gloss should explain only the term needed for that card, preferably in 1 sentence or 1 short line per term.
+For Contabilidade cards, do **not** interpret “fonte/ref” as “CPC only”. Higor wants every accounting card to receive an official/normative reference when one exists. If no direct CPC/ICPC item supports the point, use the best official basis instead, commonly: Lei 6.404/76 for balanço patrimonial, DRE, DLPA, capital social, reservas, ações em tesouraria, ajustes de avaliação patrimonial, dividendos and estrutura societária; CPC 00 (R2) for definitions/equation of ativo, passivo, patrimônio líquido, receita and despesa; CFC/NBC only when it is the actual governing source. Only omit a source block when no reliable official/normative support exists, and say that explicitly in the draft/report.
 
-Use this only in the card that will be inserted into Anki, and show it in the approval draft when feasible so Higor can approve the exact final content.
+For **Português/Gramática** cards, when the card uses a technical term that may be the learning bottleneck — e.g. complemento nominal, oração subordinada completiva nominal, adjunto adnominal, sujeito paciente, se apassivador, índice de indeterminação do sujeito, regência, crase, próclise, conectivo concessivo/causal/conclusivo, tese, contra-argumento, inferência, extrapolação, coesão lexical, analogia, metáfora, gerúndio, redundância, referência, sujeito/predicado, voz passiva sintética etc. — add a tiny explanatory gloss at the end of the `VERSO`, in the same spirit as lei seca blocks: subordinate, compact, and not a mini-aula. The gloss should explain only the term needed for that card, preferably in 1 sentence or 1 short line per term.
+
+This is not optional for concurso-based Português batches unless the card truly contains no technical term. Higor corrected a batch where only some Português cards had glosses; for future Portuguese batches, plan the term glosses upfront and audit before insertion that every applicable note has exactly one `HERMES_TERMS_SOURCE_V1` block. Do not rely on “some cards have glosses” as sufficient.
+
+Use this in the card that will be inserted into Anki, and show it in the approval draft when feasible so Higor can approve the exact final content.
 
 ### Portuguese term gloss block
 
@@ -463,6 +486,8 @@ Use `anki-card-editing` for the concrete database safety workflow, including:
 Never insert unapproved draft cards into Anki. If Higor edits a card in the approval reply, insert the edited version, not the earlier draft.
 
 ## Common Pitfalls
+
+0. **Inserting Contabilidade cards without CPC/ICPC support.** Fix: for Contabilidade/Custos/Auditoria cards that test a clear normative point, add the official CPC/ICPC/NBC block in the approval draft itself. Use `references/accounting-cpc-source-map.md` for common Contabilidade Geral mappings. If no safe normative support is found, explicitly mark source unavailable rather than silently omitting it.
 
 1. **Turning a question into a mini-aula.** Fix: identify the exact gap and make one active-recall card.
 2. **Making every alternative a card.** Fix: only autonomous and relevant alternatives become cards unless Higor explicitly asks for alternatives.
