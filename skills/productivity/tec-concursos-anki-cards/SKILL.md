@@ -16,7 +16,7 @@ metadata:
 
 Use this skill to transform Tec Concursos screenshots, OCR, copied question pages, alternatives, answer keys, explanations, specific laws, edital excerpts, PDF/material de estudo passages, CPC items, accounting/auditing standards, and other exam-study sources into concise Anki flashcards for Higor's fiscal-area study.
 
-The goal is **not** to summarize the whole subject. The goal is to identify the exact gap revealed by the question, error, guess, answer key, or explanation and turn that point into active recall.
+The goal is **not** to summarize the whole subject. The default focus is always **Higor's error/doubt and the correct answer rule**: first identify why he missed, guessed, hesitated, or explicitly marked the point, then turn that gap into active recall. Only expand beyond the immediate error/correct answer when the cobrando topic is recurrent/high-yield for fiscal concursos or when the source itself contains closely related traps that would likely cause the same mistake again.
 
 Treat every legible detail from the user's source as authoritative. Do not challenge, correct, or contradict the gabarito, professor's comment, or explanation shown in the provided material. If something seems counterintuitive, still build the card from it.
 
@@ -87,9 +87,11 @@ Default: **1 relevant point = 1 flashcard**, but keep batches lean. Higor prefer
 
 When Higor sends a mixed batch and asks for "quantos achar necessário", calibrate quantity by an explicit evidence hierarchy rather than by vague intuition:
 
-1. **User signal in the source**: user's wrong answer, note like "quero esses dois", highlighted difficulty, or repeated confusion gets priority.
-2. **Question/comment signal**: if the pasted source itself shows multiple independent traps, professor emphasis, súmula/artigo seco, prazo, percent, exact term, or contrast between close concepts, create more cards.
-3. **Known banca pattern from the source**: CEBRASPE favors subtle C/E inversions; FGV favors conceptual distinctions and jurisprudential theses; FCC favors lei seca, súmulas, requisitos and marcos temporais. Use these patterns only as a proxy when not researching external exams.
+1. **Primary focus: Higor's error/doubt + correct answer**: for each question, first create the minimum card(s) needed to attack the exact mistake, hesitation, or requested point and the correct rule that fixes it. This is the default deliverable.
+2. **Expand only when justified**: create extra cards beyond the immediate error/correct answer only if the topic is recurrent/high-yield for fiscal concursos, the source shows a related trap that is likely to recur, or Higor explicitly asks to cover the surrounding topic.
+3. **User signal in the source**: user's wrong answer, note like "quero esses dois", highlighted difficulty, or repeated confusion gets priority.
+4. **Question/comment signal**: if the pasted source itself shows multiple independent traps, professor emphasis, súmula/artigo seco, prazo, percent, exact term, or contrast between close concepts, create more cards.
+5. **Known banca pattern from the source**: CEBRASPE favors subtle C/E inversions; FGV favors conceptual distinctions and jurisprudential theses; FCC favors lei seca, súmulas, requisitos and marcos temporais. Use these patterns only as a proxy when not researching external exams.
 4. **Fiscal-area relevance tier across all subjects**: core fiscal disciplines and recurring objective-test topics get more coverage; incidental disciplines/topics get fewer cards unless the user explicitly marks them as a pain point. Apply this subject-wide rubric when no live recurrence survey was requested:
    - **Very high / core fiscal**: Direito Tributário, Legislação Tributária, Reforma Tributária/IBS/CBS/IS, Contabilidade Geral/Avançada, Contabilidade de Custos, Auditoria, AFO/Direito Financeiro, Português. These can receive fuller card coverage, especially for lei seca, CPC/NBC, cálculos, conceitos recorrentes, prazos, requisitos and jurisprudência/súmulas.
    - **High depending on edital/banca**: Direito Administrativo, Direito Constitucional, RLM/Matemática Financeira/Estatística, TI, Economia/Finanças Públicas. Card moderately to fully when the source shows banca traps, formulas, distinctions, jurisprudência or repeated user errors.
