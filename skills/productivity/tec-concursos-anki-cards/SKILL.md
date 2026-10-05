@@ -85,7 +85,15 @@ Even when the source is legal, frame the point by fiscal-exam logic, not by judi
 
 Default: **1 relevant point = 1 flashcard**, but keep batches lean. Higor prefers fewer cards focused on what is most likely to be cobrado/recorrente, rather than exhaustive coverage of every exception.
 
-When Higor sends a mixed batch and asks for "quantos achar necessário", calibrate the quantity by concurso incidence and by the user's marked difficulty: make more cards for high-frequency, high-confusion themes and fewer cards for low-incidence subjects or peripheral details. Use recent objective-exam relevance as the filter: Direito Penal incidental in fiscal-area study usually receives fewer, very targeted cards; Direito Civil/responsabilidade civil and jurisprudência/súmulas recorrentes can receive a moderate batch when the source contains common banca traps; do not equalize quantity across matérias by default.
+When Higor sends a mixed batch and asks for "quantos achar necessário", calibrate quantity by an explicit evidence hierarchy rather than by vague intuition:
+
+1. **User signal in the source**: user's wrong answer, note like "quero esses dois", highlighted difficulty, or repeated confusion gets priority.
+2. **Question/comment signal**: if the pasted source itself shows multiple independent traps, professor emphasis, súmula/artigo seco, prazo, percent, exact term, or contrast between close concepts, create more cards.
+3. **Known banca pattern from the source**: CEBRASPE favors subtle C/E inversions; FGV favors conceptual distinctions and jurisprudential theses; FCC favors lei seca, súmulas, requisitos and marcos temporais. Use these patterns only as a proxy when not researching external exams.
+4. **Fiscal-area relevance tier**: core fiscal disciplines and recurring objective-test topics get more coverage; incidental disciplines/topics get fewer cards unless the user explicitly marks them as a pain point. For this tier, use a stable rubric: Direito Civil/responsabilidade civil, dano moral, juros/correção/súmulas STJ = medium-to-high recurrence in objective exams; Direito Penal in fiscal study = usually low-to-medium and carded only for sharp traps; peripheral doctrinal debates = low unless emphasized.
+5. **External recurrence only when actually researched**: if Higor asks “o que sempre cai”, “mais cobrado”, “últimas provas” or similar, do not rely on memory. Research recent provas/editais/gabaritos or use an existing reconnaissance reference, then cite the parameter used (bancas, anos, concursos, matérias) before deciding quantity.
+
+Do not claim that something “sempre cai” unless there was an actual recurrence check. If no external research was done, say the batch was weighted by source signals + banca pattern + fiscal-area relevance, not by a live frequency survey.
 
 When analyzing aulas/PDFs, first map what appears most in the theory and questions, then draft a compact batch from those high-yield patterns. Avoid low-frequency edge cases unless the material itself emphasizes them or Higor asks for them.
 
