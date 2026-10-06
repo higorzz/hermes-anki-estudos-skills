@@ -39,7 +39,7 @@ Do not force this ratio when the source does not support it, but use it as a rev
    - nominal vs effective rate;
    - real rate uses compound relation, not direct subtraction.
 7. For cloze cards, keep the blank precise and add one short `Back Extra` explaining when/why the formula applies.
-8. For formula-heavy Matemática Financeira cards, prefer Anki MathJax/LaTeX instead of plain-text formulas in both front and back. Use display math for main formulas, e.g. `<br>{{c1::<div style="text-align:center; margin: 4px 0;">\\[A=\\frac{N}{(1+i)^n}\\]</div>}}`, and inline math for examples, e.g. `\\(A=\\frac{121}{1{,}1^2}=100\\)`. Avoid nested MathJax delimiters such as `\\(A=\\frac{N}{\\((1+i)^n\\)}\\)`; use `\\frac{N}{(1+i)^n}` directly.
+8. For formula-heavy Matemática Financeira cards, prefer Anki MathJax/LaTeX instead of plain-text formulas in both front and back. Use display math for main formulas, e.g. `<br>{{c1::<div style="text-align:center; margin: 4px 0;">\\[A=\\frac{N}{(1+i)^n}\\]</div>}}`. In back-side examples, explain the variables before the worked formula (`Onde: A = valor atual; N = valor nominal/futuro; i = taxa por período; n = número de períodos.`) and put the worked formula on its own line as display math, e.g. `Ex.: N=121, i=10%, n=2.<br><div style="text-align:center; margin: 4px 0;">\\[A=\\frac{121}{1{,}1^2}=100\\]</div>`. Avoid nested MathJax delimiters such as `\\(A=\\frac{N}{\\((1+i)^n\\)}\\)`; use `\\frac{N}{(1+i)^n}` directly.
 9. After writing, reopen read-only and verify:
    - `integrity_check = ok`;
    - WAL is empty after checkpoint;
